@@ -6,7 +6,7 @@
 -> Password = nc_dev_db
 -> Port = 3306
 
-* Use this command to access the mysql env:
+* Use this command to access the mysql env (cmd-line client):
 -> mysql -unc_dev -p nc_db
 password is:
 -> nc_dev_db
