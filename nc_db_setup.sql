@@ -1,5 +1,0 @@
-CREATE DATABASE IF NOT EXISTS nc_db;
-USE nc_db;
-CREATE USER IF NOT EXISTS 'nc_dev'@'localhost' IDENTIFIED BY 'nc_dev_pwd';
-GRANT ALL PRIVILEGES ON nc_db.* TO 'nc_dev'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
