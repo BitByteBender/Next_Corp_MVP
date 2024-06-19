@@ -48,6 +48,7 @@ class DBStorage:
         """ Commits all challenges of the current database session """
         self.__session.commit()
 
+
     def delete(self, obj=None):
         """ Delete obj from the current database session """
         if obj is not None:
