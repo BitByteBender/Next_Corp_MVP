@@ -62,8 +62,8 @@
             <input type="text" name="phone_number" value="{{ update_employee.phone_number }}" placeholder="Phone Number" required><br>
             <input type="checkbox" id="is_hr" name="is_hr" {% if update_employee.is_hr %}checked{% endif %} onclick="updateCorpPosition()"> Is HR?<br>
             <input type="date" name="joined_date" value="{{ update_employee.joined_date[:10] }}" placeholder="Joined Date" required><br>
-            <input type="date" name="expiry_date" value="{{ update_employee.expiry_date[:10] }}" placeholder="Expiry Date"><br>
-            <input type="text" id="corp_position" name="corp_position" value="{{ update_employee.corp_position }}" placeholder="Position"><br>
+            <input type="date" id="expiry_date" name="expiry_date" value="{% if update_employee.expiry_date %}{{ update_employee.expiry_date[:10] }}{% endif %}"><br>
+	    <input type="text" id="corp_position" name="corp_position" value="{{ update_employee.corp_position }}" placeholder="Position"><br>
             <button type="submit">Update Employee</button>
         </form>
     {% else %}

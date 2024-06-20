@@ -47,7 +47,7 @@ def add_employee():
         flash("You can't access this page you need to login first.") 
         return redirect(url_for('login.login_page'))
 
-    is_hr = request.form.get('is_hr').lower() == 'true'
+    is_hr = request.form.get('is_hr', 'false').lower() == 'true'
     corp_position = request.form.get('corp_position')
     if is_hr:
         corp_position = "Human Resources"
@@ -100,6 +100,10 @@ def update_employee(employee_id):
                 if is_hr:
                     corp_position = "Human Resources"
 
+                expiry_date = request.form.get('expiry_date')
+                if not expiry_date:
+                    expiry_date = None
+
                 updated_data = {
                     "name": request.form.get('name'),
                     "email": request.form.get('email'),
@@ -109,7 +113,7 @@ def update_employee(employee_id):
                     "phone_number": request.form.get('phone_number'),
                     "is_hr": is_hr,
                     "joined_date": request.form.get('joined_date'),
-                    "expiry_date": request.form.get('expiry_date'),
+                    "expiry_date": expiry_date,
                     "corp_position": corp_position
                 }
 
@@ -124,7 +128,7 @@ def update_employee(employee_id):
 
                 return redirect(url_for('dashboard.dashboard_page'))
 
-            return render_template('dashboard.html', employees=employees, update_employee=employee)
+            return render_template('update_employee.html', employee=employee)
         else:
             flash("Error fetching employee data")
             return redirect(url_for('dashboard.dashboard_page'))
