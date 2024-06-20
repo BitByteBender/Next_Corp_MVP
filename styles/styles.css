@@ -16,7 +16,7 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 7%;
+  margin-top: 6%;
 }
 
 /* Header Styles */
@@ -58,6 +58,20 @@ body {
   margin: 0 auto;
   padding: 60px 20px;
   width: 20%;
+}
+
+.sign-up-form {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 20px 2px #00000033;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 550px;
+  justify-content: center;
+  margin-bottom: 0 auto;
+  padding: 60px 20px;
+  width: 23%;
 }
 
 .form-body {
@@ -126,7 +140,6 @@ a {
   color: #004d4d;
   font-size: 1.25rem;
   text-decoration: none;
-  text-shadow: 4px 4px 18px #a7a7a7;
 }
 
 /* Footer */
