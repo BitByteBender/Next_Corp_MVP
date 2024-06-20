@@ -9,7 +9,11 @@ from pages import view
 from auth.register import register
 from auth.login import login
 from dashboard import dash
+from dotenv import load_dotenv
 
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = getenv('SECRET_KEY', os.urandom(24))
