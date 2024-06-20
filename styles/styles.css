@@ -22,6 +22,7 @@ body {
 /* Header Styles */
 .main-header {
   background-color: #004d4d;
+  box-shadow: 5px 5px 20px 2px #00000033;
   color: #fff;
   padding: 20px 40px;
   text-align: center;
