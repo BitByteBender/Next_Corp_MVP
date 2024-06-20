@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to your NextCorp account." />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="icon" href="../images/NextCorp_favicon.png" type="image/x-icon" />
+    <title>NextCorp</title>
+    <!-- Import nunito sans font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <h1>NextCorp</h1>
+    </header>
+    <!-- Form -->
+    <section class="main-content">
+      <form class="sign-in-form" method="POST" action="{{ url_for('handle_sign_in') }}">
+        <div class="form-header">
+          <img class="account-icon" src="../images/account_icon.png" alt="User Account Icon" />
+        </div>
+        <div class="form-body">
+          <input type="text" name="username" placeholder="Corp id" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Sign In</button>
+          <p>Forgot Password?</p>
+          <p>
+            <a href="reset_password.html">Reset Password</a>
+          </p>
+        </div>
+      </form>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <hr />
+      <p>Copyright &copy; NextCorp 2024</p>
+    </footer>
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='scripts/sign_in.js') }}"></script>
+  </body>
+</html>
