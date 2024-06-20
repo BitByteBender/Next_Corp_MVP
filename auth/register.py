@@ -4,7 +4,8 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request
 import requests
 
 
-register = Blueprint('register', __name__, template_folder='templates')
+# register = Blueprint('register', __name__, template_folder='templates', static_folder='static')
+register = Blueprint('register', __name__, template_folder='templates', static_folder='../static')
 api_url = 'http://localhost:5000/api/corps'
 
 
@@ -40,9 +41,14 @@ def register_page():
         name = request.form.get('name')
         email = request.form.get('email')
         password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
 
         if not name or not email or not password:
             flash("All fields are required!")
+            return redirect(url_for('register.register_page'))
+
+        if password != confirm_password:
+            flash("Passwords do not match!")
             return redirect(url_for('register.register_page'))
 
         if check_existing_corp_name(name):
