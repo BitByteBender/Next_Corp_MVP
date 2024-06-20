@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script>
+        function deleteEmployee(employeeId) {
+            fetch(`/admin/dashboard/delete/${employeeId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert("Error deleting employee: " + data.error);
+                } else {
+                    alert(data.message);
+                    location.reload();
+                }
+            })
+            .catch(error => {
+                alert("Error deleting employee: " + error.message);
+            });
+        }
+
+        function updateCorpPosition() {
+            var isHrCheckbox = document.getElementById("is_hr");
+            var corpPositionInput = document.getElementById("corp_position");
+            if (isHrCheckbox.checked) {
+                corpPositionInput.value = "Human Resources";
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Dashboard</h1>
+
+    <!-- Flash messages display -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Add or Update Employee Form -->
+    {% if update_employee %}
+        <h2>Update Employee</h2>
+        <form method="POST" action="{{ url_for('dashboard.update_employee', employee_id=update_employee.id) }}">
+            <input type="text" name="name" value="{{ update_employee.name }}" placeholder="Name" required><br>
+            <input type="email" name="email" value="{{ update_employee.email }}" placeholder="Email" required><br>
+            <input type="password" name="passwd" value="{{ update_employee.passwd }}" placeholder="Password" required><br>
+            <input type="date" name="birth_date" value="{{ update_employee.birth_date[:10] }}" placeholder="Birth Date" required><br>
+            <input type="text" name="card_id_number" value="{{ update_employee.card_id_number }}" placeholder="Card ID Number" required><br>
+            <input type="text" name="phone_number" value="{{ update_employee.phone_number }}" placeholder="Phone Number" required><br>
+            <input type="checkbox" id="is_hr" name="is_hr" {% if update_employee.is_hr %}checked{% endif %} onclick="updateCorpPosition()"> Is HR?<br>
+            <input type="date" name="joined_date" value="{{ update_employee.joined_date[:10] }}" placeholder="Joined Date" required><br>
+            <input type="date" name="expiry_date" value="{{ update_employee.expiry_date[:10] }}" placeholder="Expiry Date"><br>
+            <input type="text" id="corp_position" name="corp_position" value="{{ update_employee.corp_position }}" placeholder="Position"><br>
+            <button type="submit">Update Employee</button>
+        </form>
+    {% else %}
+        <h2>Add Employee</h2>
+        <form method="POST" action="{{ url_for('dashboard.add_employee') }}">
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="passwd" placeholder="Password" required><br>
+            <input type="text" name="birth_date" placeholder="Birth Date (YYYY-MM-DD)" required><br>
+            <input type="text" name="card_id_number" placeholder="Card ID Number" required><br>
+            <input type="text" name="phone_number" placeholder="Phone Number" required><br>
+            <input type="checkbox" id="is_hr" name="is_hr" onclick="updateCorpPosition()"> Is HR?<br>
+            <input type="text" id="corp_position" name="corp_position" placeholder="Position"><br>
+            <input type="text" name="joined_date" placeholder="Joined Date (YYYY-MM-DD)" required><br>
+            <input type="text" name="expiry_date" placeholder="Expiry Date (YYYY-MM-DD)"><br>
+            <button type="submit">Add Employee</button>
+        </form>
+    {% endif %}
+
+    <h2>Employees</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+                <a href="{{ url_for('dashboard.dashboard_page', update_id=employee.id) }}">Update</a>
+                <button type="button" class="delete-button" onclick="deleteEmployee('{{ employee.id }}')">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
