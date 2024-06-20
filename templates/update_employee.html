@@ -39,9 +39,9 @@
                 <input type="date" class="form-control" id="joined_date" name="joined_date" value="{{ employee.joined_date }}" required>
             </div>
             <div class="form-group">
-                <label for="expiry_date">Expiry Date</label>
-                <input type="date" class="form-control" id="expiry_date" name="expiry_date" value="{{ employee.expiry_date }}">
-            </div>
+    		<label for="expiry_date">Expiry Date</label>
+    		<input type="date" name="expiry_date" value="{% if update_employee and update_employee.expiry_date %}{{ update_employee.expiry_date[:10] }}{% endif %}" placeholder="Expiry Date"><br>
+	    </div>
             <div class="form-group">
                 <label for="corp_position">Corporate Position</label>
                 <input type="text" class="form-control" id="corp_position" name="corp_position" value="{{ employee.corp_position }}">
