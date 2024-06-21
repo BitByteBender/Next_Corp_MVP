@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request, session
 import requests
 
-login = Blueprint('login', __name__, template_folder='templates')
+login = Blueprint('login', __name__, template_folder='templates', static_folder='../static')
 api_url = 'http://localhost:5000/api/corps'
 
 
