@@ -4,36 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <script>
-        function deleteEmployee(employeeId) {
-            fetch(`/admin/dashboard/delete/${employeeId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    alert("Error deleting employee: " + data.error);
-                } else {
-                    alert(data.message);
-                    location.reload();
-                }
-            })
-            .catch(error => {
-                alert("Error deleting employee: " + error.message);
-            });
-        }
-
-        function updateCorpPosition() {
-            var isHrCheckbox = document.getElementById("is_hr");
-            var corpPositionInput = document.getElementById("corp_position");
-            if (isHrCheckbox.checked) {
-                corpPositionInput.value = "Human Resources";
-            }
-        }
-    </script>
+    <script src="{{ url_for('dashboard.static', filename='scripts/dashboard_operations.js') }}" defer></script>
 </head>
 <body>
 <div class="container">
