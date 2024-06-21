@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify, render_template, url_for
+from flask import Flask, jsonify, render_template
 from models import storage
 from api.views import app_views
 import os
@@ -8,6 +8,7 @@ from os import getenv
 from pages import view
 from auth.register import register
 from auth.login import login
+from auth.reset_password import reset
 from dashboard import dash
 
 
@@ -19,6 +20,7 @@ app.register_blueprint(app_views)
 app.register_blueprint(view)
 app.register_blueprint(register, url_prefix='/corp_auth')
 app.register_blueprint(login, url_prefix='/corp_auth')
+app.register_blueprint(reset, url_prefix='/corp_auth')
 app.register_blueprint(dash, url_prefix='/admin')
 
 
