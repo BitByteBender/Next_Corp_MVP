@@ -5,7 +5,7 @@ import requests, json
 from api.views.employees import retrieve_one_employee
 
 
-dash = Blueprint('dashboard', __name__, template_folder='templates')
+dash = Blueprint('dashboard', __name__, template_folder='templates', static_folder='static')
 api_url = 'http://localhost:5000/api'
 
 

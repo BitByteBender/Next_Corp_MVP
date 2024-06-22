@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Register for a NextCorp account." />
@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
-  </head>
+    <script src="{{ url_for('login.static', filename='scripts/reset_password.js') }}" defer></script>
+</head>
 <body>
     <!-- Header -->
     <header class="main-header">
@@ -36,7 +37,7 @@
                 {% endwith %}
                 
                 <!-- Username input (Corp ID) -->
-                <input type="text" name="corp_id" placeholder="Corp ID" required>
+                <input type="text" name="corp_id" id="corp_id" placeholder="Corp ID" required>
 
                 <!-- Password input -->
                 <input type="password" name="password" placeholder="Password" required>
@@ -46,7 +47,7 @@
 
                 <!-- Forgot password link -->
                 <p>Forgot Password?</p>
-                <p><a href="reset_password.html">Reset Password</a></p>
+                <p><button type="button" class="link-button" id="reset-password-link">Reset Password</button></p>
             </div>
         </form>
     </section>
