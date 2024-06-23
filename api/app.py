@@ -8,6 +8,7 @@ from os import getenv
 from pages import view
 from auth.register import register
 from auth.login import login
+from auth.logout import logout
 from auth.reset_password import reset
 from dashboard import dash
 
@@ -22,6 +23,7 @@ app.register_blueprint(register, url_prefix='/corp_auth')
 app.register_blueprint(login, url_prefix='/corp_auth')
 app.register_blueprint(reset, url_prefix='/corp_auth')
 app.register_blueprint(dash, url_prefix='/admin')
+app.register_blueprint(logout, url_prefix='/auth')
 
 
 @app.errorhandler(404)

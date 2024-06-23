@@ -129,9 +129,9 @@ button:hover, .button:hover {
 }
 
 form {
-    display: flex; /* Use flexbox */
-    flex-wrap: wrap; /* Wrap items */
-    gap: 10px; /* Gap between items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
     max-width: 500px;
     margin-left: auto;
@@ -139,16 +139,16 @@ form {
 }
 
 form input, form select, form textarea, form label, form button {
-    flex: 1 1 100%; /* Flex items to take full width */
+    flex: 1 1 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 form input[type="checkbox"], form label[for="is_hr"] {
-    flex: 1 1 auto; /* Allow checkbox and label to adjust */
-    width: auto; /* Maintain natural width */
-    margin: 0 5px; /* Add margin between checkbox and label */
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0 5px;
 }
 
 form button {

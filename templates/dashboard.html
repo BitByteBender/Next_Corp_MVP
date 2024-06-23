@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('dashboard.static', filename='css/dash.css') }}">
     <script src="{{ url_for('dashboard.static', filename='scripts/dashboard_operations.js') }}" defer></script>
+    <script src="{{ url_for('logout.static', filename='scripts/logout.js') }}" defer></script>
 </head>
 <body>
     <header>
@@ -16,7 +17,9 @@
         <ul>
             <li><a href="{{ url_for('dashboard.add_employee') }}">Add Employee</a></li>
             <li><a href="{{ url_for('dashboard.dashboard_page') }}">Display Employees</a></li>
-            <li><button id="logout">Logout</button></li>
+	    <li>
+	      <button id="logoutBtn">Logout</button>
+	    </li>
         </ul>
     </nav>
 
