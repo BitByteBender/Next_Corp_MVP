@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('employee_profile.static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Employee Profile</h1>
+    </header>
+    <section class="main-content">
+        <p>Welcome, {{ employee_data.name }} to NextCorp - Interface</p>
+        <div>
+            <h2>Employee Details</h2>
+            <p>Employee ID: {{ employee_data.id }}</p>
+            <p>Name: {{ employee_data.name }}</p>
+            <p>Email: {{ employee_data.email }}</p>
+            <p>Birth Date: {{ employee_data.birth_date }}</p>
+            <p>Card ID Number: {{ employee_data.card_id_number }}</p>
+            <p>Phone Number: {{ employee_data.phone_number }}</p>
+<li><a href="{{ url_for('employee_profile.edit_profile', employee_id=employee_data['id']) }}">Edit Profile</a></li>
+</div>
+    </section>
+    <footer class="footer">
+        <hr>
+        <p>Copyright &copy; NextCorp 2024</p>
+    </footer>
+</body>
+</html>
