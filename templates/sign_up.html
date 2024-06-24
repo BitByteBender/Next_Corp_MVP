@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to your NextCorp account." />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Reset your password for NextCorp account." />
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="icon" href="../images/NextCorp_favicon.png" type="image/x-icon" />
     <title>NextCorp</title>
@@ -21,19 +21,19 @@
     </header>
     <!-- Form -->
     <section class="main-content">
-      <form class="sign-in-form" method="POST" action="{{ url_for('handle_reset_password') }}">
+      <form class="sign-up-form" method="POST" action="{{ url_for('handle_sign_in') }}">
         <div class="form-header">
-          <img class="account-icon" src="../images/key_icon.png" alt="Key Icon" />
+          <img class="account-icon" src="../images/account_icon.png" alt="User Account Icon" />
         </div>
         <div class="form-body">
-          <input type="password" name="new_password" placeholder="New Password" required />
-          <input type="password" name="confirm_password" placeholder="Confirm New Password" required />
-          <div class="buttons">
-            <button type="submit" class="submit-button">Submit</button>
-            <button type="reset" class="cancel-button">Cancel</button>
-          </div>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button type="submit">Create Account</button>
+          <p>Already have an account?</p>
           <p>
-            <a href="sign_in.html">Back to Sign In</a>
+            <a href="sign_in.html">Login here</a>
           </p>
         </div>
       </form>
@@ -44,6 +44,6 @@
       <p>Copyright &copy; NextCorp 2024</p>
     </footer>
     <!-- Script -->
-    <script src="{{ url_for('static', filename='scripts/reset_password.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sign_in.js') }}"></script>
   </body>
 </html>
