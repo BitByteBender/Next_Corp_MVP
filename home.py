@@ -6,7 +6,7 @@ from employee_profile import get_employee_name
 home = Blueprint('home', __name__, template_folder='templates', static_folder='../static')
 
 
-@home.route('/home')
+@home.route('/')
 def home_page():
     if 'employee_id' not in session:
         flash("You need to log in first.")

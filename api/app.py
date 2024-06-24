@@ -29,7 +29,7 @@ app.register_blueprint(dash, url_prefix='/admin')
 app.register_blueprint(logout, url_prefix='/auth')
 app.register_blueprint(employee_login, url_prefix='/auth')
 app.register_blueprint(profile, url_prefix='/profile')
-app.register_blueprint(home)
+app.register_blueprint(home, url_prefix='/home')
 
 
 @app.errorhandler(404)
