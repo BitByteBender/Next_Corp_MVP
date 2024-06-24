@@ -3,8 +3,10 @@
 from flask import Blueprint, render_template, session, redirect, url_for, flash, request
 import requests
 
+
 profile = Blueprint('employee_profile', __name__, template_folder='templates', static_folder='static')
 api_url = 'http://localhost:5000/api/employees'
+
 
 @profile.route('/', methods=['GET', 'POST'], strict_slashes=False)
 def profile_page():
@@ -29,7 +31,7 @@ def profile_page():
             'birth_date': request.form.get('birth_date'),
             'card_id_number': request.form.get('card_id_number'),
             'phone_number': request.form.get('phone_number')
-            # Add other fields as needed
+            # -> Add other fields as needed (to be checked later)
         }
 
         if update_employee_data(employee_id, updated_data):
@@ -40,6 +42,7 @@ def profile_page():
             flash("Failed to update employee data.")
 
     return render_template('employee_profile.html', employee_data=employee_data)
+
 
 @profile.route('/view', methods=['GET'])
 def view_profile():
