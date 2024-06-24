@@ -1,0 +1,16 @@
+<!-- This is just a prototype in-progress (ca branch needs to provide a UI)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome, {{ employee_name }}!</h1>
+    <ul>
+        <li><a href="{{ url_for('home.home_page') }}">Home</a></li>
+        <li><a href="{{ url_for('employee_profile.view_profile', employee_id=employee_id) }}">Profile</a></li>
+    </ul>
+</body>
+</html>
