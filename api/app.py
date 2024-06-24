@@ -11,6 +11,9 @@ from auth.login import login
 from auth.logout import logout
 from auth.reset_password import reset
 from dashboard import dash
+from auth.employee_login import employee_login
+from employee_profile import profile
+from home import home
 
 
 app = Flask(__name__)
@@ -24,6 +27,9 @@ app.register_blueprint(login, url_prefix='/corp_auth')
 app.register_blueprint(reset, url_prefix='/corp_auth')
 app.register_blueprint(dash, url_prefix='/admin')
 app.register_blueprint(logout, url_prefix='/auth')
+app.register_blueprint(employee_login, url_prefix='/auth')
+app.register_blueprint(profile, url_prefix='/profile')
+app.register_blueprint(home)
 
 
 @app.errorhandler(404)
