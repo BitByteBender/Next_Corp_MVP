@@ -1,4 +1,4 @@
-<!-- This is just a prototype in-progress (ca branch needs to provide a UI)-->
+<!-- Prototype page (Be updated soon) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="Home page." />
-    <link rel="stylesheet" href="{{ url_for('home.static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
     <link rel="icon" href="{{ url_for('home.static', filename='images/NextCorp_favicon.png') }}" type="image/x-icon" />
     <title>Home - NextCorp</title>
     <!-- Import nunito sans font family -->
@@ -15,9 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <h1>Welcome, {{ employee_name }}!</h1>
+    <h1>Welcome, {{ session.get('employee_name', '') }}!</h1>
     <ul>
-        <li><a href="{{ url_for('home.home_page') }}">Home</a></li>
+        <li><a href="{{ url_for('home_page') }}">Home</a></li>
         <li><a href="{{ url_for('employee_profile.view_profile', employee_id=employee_id) }}">Profile</a></li>
     </ul>
 </body>

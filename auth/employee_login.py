@@ -10,13 +10,6 @@ api_url = 'http://localhost:5000/api/employees'
 
 @employee_login.route('/employee_login/', methods=['GET', 'POST'], strict_slashes=False)
 def login_page():
-    """
-    Retrieve form data
-    Check if any field is missing
-    Authenticate the employee using employee_id and password
-    Redirect to a profile or check-in page after successful login
-    Returns the login page template
-    """
     if request.method == 'POST':
         employee_id = request.form.get('employee_id')
         password = request.form.get('password')
@@ -28,8 +21,15 @@ def login_page():
         if authenticate_employee(employee_id, password):
             flash("Login successful!")
             session['employee_id'] = employee_id
-            session['employee_name'] = get_employee_data(employee_id)['name']
-            return redirect(url_for('home.home_page'))
+            employee_data = get_employee_data(employee_id)
+            if employee_data:
+                session['employee_name'] = employee_data['name']
+                print(f"[Login Page] Set Employee Name in session: {session['employee_name']}")
+                print(f"[Login Page] Full session after setting employee name: {session.items()}")
+            else:
+                flash("Failed to retrieve employee data.")
+                return redirect(url_for('employee_login.login_page'))
+            return redirect(url_for('home_page'))
         else:
             flash("Invalid Credentials.")
             return redirect(url_for('employee_login.login_page'))
@@ -38,28 +38,25 @@ def login_page():
 
 
 def authenticate_employee(employee_id, password):
-    """
-    Function to authenticate the employee
-    Check if the password matches
-    """
     try:
         response = requests.get(f"{api_url}/{employee_id}")
         if response.status_code == 200:
             employee_data = response.json()
-            print("Employee data retrieved: ", employee_data)
-            print(f"Input password: {password}, Stored password: {employee_data['passwd']}")
+            print("[Login Page] Employee data retrieved: ", employee_data)
+            print(f"[Login Page] Input password: {password}, Stored password: {employee_data['passwd']}")
 
             if employee_data['passwd'] == password:
-                print("Password match successful!")
+                print("[Login Page] Password match successful!")
                 return True
             else:
-                print("Password does not match.")
+                print("[Login Page] Password does not match.")
         else:
-            print("Failed to retrieve employee data.")
+            print("[Login Page] Failed to retrieve employee data.")
         return False
     except requests.exceptions.RequestException as e:
         flash(f"Error: {str(e)}")
         return False
+
 
 def get_employee_data(employee_id):
     try:

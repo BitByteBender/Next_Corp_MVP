@@ -31,7 +31,6 @@ def profile_page():
             'birth_date': request.form.get('birth_date'),
             'card_id_number': request.form.get('card_id_number'),
             'phone_number': request.form.get('phone_number')
-            # -> Add other fields as needed (to be checked later)
         }
 
         if update_employee_data(employee_id, updated_data):
@@ -88,6 +87,7 @@ def update_employee_data(employee_id, updated_data):
 
 def get_employee_name(employee_id):
     employee_data = get_employee_data(employee_id)
+    print(f"Employee Data for {employee_id}: {employee_data}")
     if employee_data:
         return employee_data.get('name')
     return None
