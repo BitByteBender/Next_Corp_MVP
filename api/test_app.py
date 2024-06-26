@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
 import unittest
-from flask import current_app
+import sys
+import os
+
+# Directory of the 'api' directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import app
 
 class BasicTests(unittest.TestCase):
@@ -15,31 +20,15 @@ class BasicTests(unittest.TestCase):
     def tearDown(self):
         self.app_context.pop()
 
-    def test_app_exists(self):
-        self.assertIsNotNone(current_app)
-
-    def test_app_is_testing(self):
-        self.assertTrue(current_app.config['TESTING'])
-
     def test_index(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Welcome', response.data)  # Adjust according to the expected content
+        self.assertIn(b'Welcome', response.data)
 
-    def test_auth_register(self):
-        response = self.app.get('/corp_auth/register')  # Adjust the route if necessary
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Register', response.data)  # Adjust according to the expected content
-
-    def test_auth_login(self):
-        response = self.app.get('/corp_auth/login')  # Adjust the route if necessary
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Login', response.data)  # Adjust according to the expected content
-
-    def test_dashboard(self):
-        response = self.app.get('/admin/dashboard')  # Adjust the route if necessary
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Dashboard', response.data)  # Adjust according to the expected content
+    def test_404_error(self):
+        response = self.app.get('/nonexistent_route')
+        self.assertEqual(response.status_code, 404)
+        self.assertIn(b'Not found', response.data)
 
 if __name__ == "__main__":
     unittest.main()

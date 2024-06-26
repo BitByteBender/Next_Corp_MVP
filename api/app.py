@@ -2,7 +2,7 @@
 
 from flask import Flask, jsonify, session
 from flask_session import Session
-from models import storage
+from models import storage, initialize_storage
 from api.views import app_views
 import os
 from os import getenv
