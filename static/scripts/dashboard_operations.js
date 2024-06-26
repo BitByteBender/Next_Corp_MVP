@@ -1,5 +1,6 @@
 "use strict";
 
+
 function deleteEmployee(employeeId) {
     fetch(`/admin/dashboard/delete/${employeeId}`, {
         method: 'DELETE',
@@ -28,3 +29,15 @@ function updateCorpPosition() {
         corpPositionInput.value = "Human Resources";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('show-employees').addEventListener('click', function () {
+        document.getElementById('employee-form').style.display = 'none';
+        document.getElementById('employee-list').style.display = 'block';
+    });
+
+    document.getElementById('add-employee').addEventListener('click', function () {
+        document.getElementById('employee-list').style.display = 'none';
+        document.getElementById('employee-form').style.display = 'block';
+    });
+});
