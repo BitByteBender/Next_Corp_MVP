@@ -93,3 +93,10 @@ employee login/logout, profile management, and the home page.
 | /home                 | / or /home or /home/ Paths using auto redirections to the home page.      |
 | /profile              | Path to access the profile manager to perform updates or view data.       |
 
+# Project's screenshots:
+![Corp Registration](screenshots/Register.png)
+![Dashboard](screenshots/dashboard.png)
+![Add Employee](screenshots/Add.png)
+![Edit Employee](screenshots/Update.png)
+![Delete Employee](screenshots/Delete.png)
+![Logout](screenshots/Logout.png)
