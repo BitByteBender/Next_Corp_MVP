@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify, session
+from flask import Flask, jsonify, session, url_for, redirect, flash
+from flask_cors import CORS
+import requests
 from flask_session import Session
 from models import storage
 from api.views import app_views
@@ -14,14 +16,18 @@ from auth.reset_password import reset
 from dashboard import dash
 from auth.employee_login import employee_login
 from employee_profile import profile
-from home import home
+from home import home, render_home_page
+from checker_handler import API_URL
+
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
+CORS(app)
 app.config['SECRET_KEY'] = getenv('SECRET_KEY', os.urandom(24))
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './flask_session/'
 app.config['SESSION_PERMANENT'] = False
 Session(app)
+
 
 app.register_blueprint(app_views)
 app.register_blueprint(view)
@@ -41,7 +47,9 @@ def home_page(trailing_slash):
     """ Removes trailing slash if present and renders home_page """
     if trailing_slash:
         return redirect(url_for('home_page'))
-    return render_home_page()
+
+    last_checkin = session.get('last_checkin')
+    return render_home_page(last_checkin=last_checkin)
 
 
 @app.errorhandler(404)
