@@ -1,7 +1,7 @@
 # NextCorp | Your all-in-one small corp manager
 
 
-NextCorp -> is an online employee manager system solution for small corps
+__NextCorp -> is an online employee manager system solution for small corps__
 
 
 # Project Description:
