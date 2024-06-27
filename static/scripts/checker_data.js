@@ -1,8 +1,7 @@
 "use strict";
 
-const employeeId = "{{ session.get('employee_id') }}";
+// const employeeId = "{{ session.get('employee_id') }}";
 
-// Employee ID (hardcoded for simplicity)
 function fetchEmployeeCheckers(employeeId) {
     const apiUrl = `http://0.0.0.0:5000/api/employees/${employeeId}/checkers`;
 
@@ -44,9 +43,9 @@ function fetchEmployeeCheckers(employeeId) {
         displayCheckersData(lastCheckin, lastCheckout);
     })
     .catch(error => {
+	const checkersContainer = document.getElementById('checkers');
         if (error.message === 'NetworkError') {
-            // Display hardcoded check-in and check-out times
-            displayCheckersData('2024-06-27T04:05:26', '2024-06-27T04:05:21');
+            checkersContainer.textContent = 'Failed to fetch data: Network Error';
         } else {
             const checkersContainer = document.getElementById('checkers');
             checkersContainer.textContent = `Failed to fetch data: ${error.message}`;
@@ -75,5 +74,10 @@ function displayCheckersData(lastCheckin, lastCheckout) {
 
 // Fetch and display the check-in/check-out times when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    fetchEmployeeCheckers(employeeId);
+    if (employeeId) {
+        fetchEmployeeCheckers(employeeId);
+    } else {
+        const checkersContainer = document.getElementById('checkers');
+        checkersContainer.textContent = 'Employee ID not available.';
+    }
 });
