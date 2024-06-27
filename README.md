@@ -79,6 +79,8 @@ employee login/logout, profile management, and the home page.
 > HTML, CSS, JS:
 * Technologies used for frontend development.
 
+# Task Manager (Trello Board):
+* https://trello.com/invite/b/95awRY6W/ATTI03e890d71d53b89b2469436abe9abf603C79E223/next-corpmvp
 
 # List of functional URL paths/routes:
 |      URLs (Active)    |                          Description                                      |
