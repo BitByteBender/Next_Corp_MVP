@@ -100,3 +100,4 @@ employee login/logout, profile management, and the home page.
 ![Edit Employee](screenshots/Update.png)
 ![Delete Employee](screenshots/Delete.png)
 ![Logout](screenshots/Logout.png)
+![Checker](screenshots/Checker.png)
