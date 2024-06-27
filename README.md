@@ -78,3 +78,18 @@ employee login/logout, profile management, and the home page.
 * The database system.
 > HTML, CSS, JS:
 * Technologies used for frontend development.
+
+
+# List of functional URL paths/routes:
+|      URLs (Active)    |                          Description                                      |
+|:---------------------:|:-------------------------------------------------------------------------:|
+| corp_auth/register    | Registration path for corps to generate a login unique id.                |
+| corp_auth/login       | Login path for corps as admins to access the dashboard.                   |
+| /reset?corp_id='{id}' | URL to reset the password for corps.                                      |
+| admin/dashboard       | Path to access the dashboard List of employees are displayed by default.  |
+| admin/dashboard/add   | URL to access the "Add Employee" functionality from the dashboard.        |
+| /update/{employee_id} | URL to access the update functionality on the dashboard (admin/dashboard).|
+| /auth/employee_login/ | Path to launch the login for user aka employees.                          |
+| /home                 | / or /home or /home/ Paths using auto redirections to the home page.      |
+| /profile              | Path to access the profile manager to perform updates or view data.       |
+
