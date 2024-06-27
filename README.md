@@ -10,11 +10,11 @@ __This Flask-based web application serves as a comprehensive solution for managi
 
 # Key Features:
 
-##- Dual-User Interface:
+> Dual-User Interface:
 * A corporate admin dashboard for managing employee records and access.
 * A user-friendly employee interface for checking in/out and viewing personal information.
 
-## Authentication and Authorization:
+>> Authentication and Authorization:
 * Distinct login systems for corporate admins and employees.
 * Secure authentication mechanisms (password hashing and comparison) to protect user credentials.
 
