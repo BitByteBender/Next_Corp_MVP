@@ -272,6 +272,11 @@ li:last-child {
   margin-top: 28rem;
 }
 
+/* Logout Button */
+#logoutBtn {
+  cursor: pointer;
+}
+
 /* Footer Styles */
 .footer {
   bottom: 0;
