@@ -82,6 +82,10 @@ employee login/logout, profile management, and the home page.
 # Task Manager (Trello Board):
 * https://trello.com/invite/b/95awRY6W/ATTI03e890d71d53b89b2469436abe9abf603C79E223/next-corpmvp
 
+# Data Modelling:
+![Database](screenshots/DB_Model.jpeg)
+
+
 # List of functional URL paths/routes:
 |      URLs (Active)    |                          Description                                      |
 |:---------------------:|:-------------------------------------------------------------------------:|
