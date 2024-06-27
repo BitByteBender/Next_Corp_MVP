@@ -107,3 +107,8 @@ employee login/logout, profile management, and the home page.
 ![Delete Employee](screenshots/Delete.png)
 ![Logout](screenshots/Logout.png)
 ![Checker](screenshots/Checker.png)
+
+# Authors:
+> Soufiane Sadgali - [Github](https://github.com/BitByteBender)
+> Cleveland Ataafi - [Github](https://github.com/thatguykwameC)
+> Olatunji Oluwadare - [Github](https://github.com/DevTunechi)
