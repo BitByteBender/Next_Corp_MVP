@@ -9,6 +9,8 @@ from models.checker import CheckInOut
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.exc import SQLAlchemyError
+
 
 classes = {"Corp": Corp, "Employee": Employee,
            "CheckInOut": CheckInOut}
@@ -46,8 +48,12 @@ class DBStorage:
 
     def save(self):
         """ Commits all challenges of the current database session """
-        self.__session.commit()
-
+        # self.__session.commit()
+        try:
+            self.__session.commit()
+        except SQLAlchemyError as e:
+            self.rollback()
+            raise
 
     def delete(self, obj=None):
         """ Delete obj from the current database session """
@@ -57,9 +63,13 @@ class DBStorage:
     def reload(self):
         """ Crates all tables in the database and create the session """
         Base.metadata.create_all(self.__engine)
+        """
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session()
+        """
+        self.__session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(self.__session_factory)
 
     def all(self, cls=None):
         """ Query on the current database session """
@@ -113,4 +123,6 @@ class DBStorage:
 
     def close(self):
         """ Close the current database session """
-        self.__session.close()
+        # self.__session.close()
+        if self.__session:
+            self.__session.close()

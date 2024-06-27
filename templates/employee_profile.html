@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <script src="{{ url_for('logout.static', filename='scripts/usr_logout.js') }}" defer></script>
 </head>
 <body class="main-page">
     <aside class="sidebar">
@@ -39,10 +40,16 @@
                     </a>
                 </li>
                 <li>
+		<!--
                     <a href="logout.html">
                         <img class="nav-icon" src="{{ url_for('employee_profile.static', filename='images/logout_icon.png') }}" alt="logout-icon">
                         Logout
                     </a>
+		-->
+	       <a id="logoutBtn" class="hover-button">
+                      <img class="nav-icon" src="{{ url_for('static', filename='images/logout_icon.png') }}" alt="logout-icon">
+              	Logout
+	       </a>
                 </li>
             </ul>
         </nav>

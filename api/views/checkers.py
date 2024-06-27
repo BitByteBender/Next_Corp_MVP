@@ -32,7 +32,6 @@ def retrieve_one_checker(cio_id):
             + '\n' if storage.get(CheckInOut, cio_id) else abort(404))
 
 
-
 @app_views.route(EMP_PATH + '/<employee_id>' + CIO_PATH,
                  methods=['POST'], strict_slashes=False)
 def insert_checker(employee_id):
@@ -74,11 +73,36 @@ def insert_checker(employee_id):
         abort(500, "Failed to create CheckInOut due to database constraint violation")
     return (json.dumps(new_checkinout.to_dict()) + '\n', 201)
 
+@app_views.route(EMP_PATH + '/<employee_id>/last_checkin', methods=['GET'], strict_slashes=False)
+def get_last_checkin(employee_id):
+    """Retrieves the latest active check-in/out record for an employee."""
+    employee_obj = storage.get(Employee, employee_id)
+    if not employee_obj:
+        abort(404)
+        
+    checkers = sorted(employee_obj.checkinsouts, key=lambda x: x.checkin, reverse=True)
+    last_checkin = next((check for check in checkers if not check.checkout), None)
+
+    return jsonify(last_checkin.to_dict() if last_checkin else None), 200
+
 
 @app_views.route(CIO_PATH + '/<cio_id>', methods=['PUT'], strict_slashes=False)
 def updates_checker(cio_id):
     """ updates a Checker obj """
-    pass
+    checker_obj = storage.get(CheckInOut, cio_id) or abort(404, "CheckInOut not found")
+    dt = request.get_json() or abort(400, "NOT a JSON")
+    ignore_keys = {'id', 'employee_id', 'created_at'}
+
+    if 'checkout' in dt and dt['checkout'] is not None:
+        try:
+            checkout_time = datetime.fromisoformat(dt['checkout'])
+            checker_obj.checkout = checkout_time
+            storage.save()
+            return jsonify(checker_obj.to_dict()), 200
+        except ValueError:
+            abort(400, "Invalid checkout format. Should be YYYY-MM-DDTHH:MM:SS")
+    else:
+        abort(400, "Only checkout updates are allowed.")
     
 
 @app_views.route(CIO_PATH + '/<cio_id>', methods=['DELETE'], strict_slashes=False)
