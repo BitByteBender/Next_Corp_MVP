@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, session
+from flask_session import Session
 from models import storage
 from api.views import app_views
 import os
@@ -15,10 +16,12 @@ from auth.employee_login import employee_login
 from employee_profile import profile
 from home import home
 
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static', template_folder='../templates')
 app.config['SECRET_KEY'] = getenv('SECRET_KEY', os.urandom(24))
-
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = './flask_session/'
+app.config['SESSION_PERMANENT'] = False
+Session(app)
 
 app.register_blueprint(app_views)
 app.register_blueprint(view)
@@ -32,10 +35,19 @@ app.register_blueprint(profile, url_prefix='/profile')
 app.register_blueprint(home)
 
 
+@app.route('/home', defaults={'trailing_slash': False}, strict_slashes=False)
+@app.route('/', defaults={'trailing_slash': False}, strict_slashes=False)
+def home_page(trailing_slash):
+    """ Removes trailing slash if present and renders home_page """
+    if trailing_slash:
+        return redirect(url_for('home_page'))
+    return render_home_page()
+
+
 @app.errorhandler(404)
 def trigger_error(err):
     """ Triggers a 404 error """
-    return (jsonify({"error": "Not found"}), 404)
+    return jsonify({"error": "Not found"}), 404
 
 
 @app.teardown_appcontext

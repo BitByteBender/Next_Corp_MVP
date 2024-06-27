@@ -21,7 +21,7 @@
         <nav class="sidebar-nav">
             <ul>
                 <li>
-                    <a href="{{ url_for('home.home_page') }}">
+                    <a href="{{ url_for('home_page') }}">
                         <img class="nav-icon" src="{{ url_for('employee_profile.static', filename='images/home_icon.png') }}" alt="dashboard-icon">
                         Home
                     </a>
@@ -61,6 +61,7 @@
                 <p>Birth Date: {{ employee_data.birth_date }}</p>
                 <p>Card ID Number: {{ employee_data.card_id_number }}</p>
                 <p>Phone Number: {{ employee_data.phone_number }}</p>
+		<!-- Will be adding more data here(this is just for MVP) -->
             </div>
 
             <div class="edit-profile-content">
