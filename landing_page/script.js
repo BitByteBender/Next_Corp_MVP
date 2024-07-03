@@ -1,48 +1,34 @@
-let slideIndex = 0;
-showSlides();
+// **DOM Content Loaded Event**
+document.addEventListener('DOMContentLoaded', () => {
+  // **Smooth Scrolling for Navigation Links**
+  const navLinks = document.querySelectorAll('nav ul li a');
+  navLinks.forEach((link) => {
+    link.addEventListener('click', smoothScroll);
+  });
 
-function showSlides() {
-  let slides = document.querySelectorAll('.slides img');
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex - 1].style.display = 'block';
-  setTimeout(showSlides, 5000); // Change image every 5 seconds
-}
+  // **Lazy Loading Images**
+  const lazyImages = document.querySelectorAll("img[loading='lazy']");
+  lazyImages.forEach((img) => {
+    img.addEventListener('load', () => {
+      img.classList.add('loaded');
+    });
+  });
 
-function plusSlides(n) {
-  slideIndex += n;
-  let slides = document.querySelectorAll('.slides img');
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  } else if (slideIndex < 1) {
-    slideIndex = slides.length;
-  }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-  }
-  slides[slideIndex - 1].style.display = 'block';
-}
+  // **View Our Project Repo Button Event Listener**
+  const projectRepoButton = document.querySelector('.project-repo');
+  projectRepoButton.addEventListener('click', () => {
+    window.location.href = 'https://github.com/BitByteBender/Next_Corp_MVP.git';
+  });
+});
 
-function scrollToSection(sectionId) {
-  document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-}
-
-document.getElementById('contactForm').addEventListener('submit', function (event) {
+// Smooth Scroll Function
+function smoothScroll(event) {
   event.preventDefault();
-  alert('Thank you for your message!');
-});
+  const targetId = event.currentTarget.getAttribute('href').substring(1);
+  const targetSection = document.getElementById(targetId);
 
-window.addEventListener('load', function () {
-  const aboutSection = document.querySelector('.about');
-  const featuresSection = document.getElementById('features');
-
-  if (aboutSection && featuresSection) {
-    const aboutHeight = aboutSection.offsetHeight;
-    featuresSection.style.height = aboutHeight + 'px';
-  }
-});
+  window.scrollTo({
+    top: targetSection.offsetTop - document.querySelector('header').offsetHeight,
+    behavior: 'smooth',
+  });
+}
