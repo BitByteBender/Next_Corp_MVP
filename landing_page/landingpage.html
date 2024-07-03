@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sign in to your NextCorp account." />
+    <meta name="description" content="NextCorp Landing Page." />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../styles/landing.css" />
+    <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="../images/NextCorp_favicon.png" type="image/x-icon" />
     <title>NextCorp</title>
     <!-- Import nunito sans font family -->
@@ -27,58 +27,83 @@
       </div>
     </header>
     <main>
-      <section id="hero">
-        <div class="container">
-          <h2>Welcome to NextCorp</h2>
-          <p>Your all-in-one small corp manager.</p>
-          <button onclick="scrollToSection('features')">Learn More</button>
+      <section class="main-page">
+        <div class="image-container">
+          <img src="images/cover_image.jpeg" alt="Cover Image" class="cover-image" />
         </div>
-      </section>
-      <section class="about">
-        <div class="container">
-          <h2>About Us</h2>
-          <p>
-            NextCorp is dedicated to providing the best solutions for how small corporations manage their employees' data. Our all-in-one employee management system is designed to streamline HR
-            processes, making it easier for organizations to handle employee information efficiently. Our mission is to provide HR departments of small corporations with a simple yet powerful tool to
-            manage their workforce, ensuring all employee data is organized and easily accessible. We have a team of experienced and skilled employees who are always ready to help you.
-          </p>
-        </div>
-      </section>
-      <section id="slider">
-        <div class="container">
-          <div class="slider">
-            <div class="slides">
-              <img src="../images/slide1.jpeg" alt="Slide 1" />
-              <img src="../images/slide2.jpeg" alt="Slide 2" />
-              <img src="../images/slide3.jpeg" alt="Slide 3" />
-              <img src="../images/slide4.jpeg" alt="Slide 4" />
-              <img src="../images/slide5.jpeg" alt="Slide 5" />
-              <img src="../images/slide6.jpeg" alt="Slide 6" />
-            </div>
-            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        <div class="hero">
+          <div class="container">
+            <h2>Welcome to NextCorp</h2>
+            <p>Your all-in-one small corp manager.</p>
+            <button onclick="location.href='https://deployedapp.example.com'">Try the App</button>
           </div>
         </div>
       </section>
-      <section id="features">
-        <div class="container">
-          <h2>Features</h2>
-          <ul class="list-features">
-            <li>Employee tracking</li>
-            <li>Attendance management</li>
-            <!-- <li>Performance evaluations</li> -->
-          </ul>
+      <section id="features" class="features">
+        <h2 class="features-header">Features</h2>
+        <div class="features-container">
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_1.jpeg" alt="features" />
+            <h2 class="features-title">Add New Employees</h2>
+            <p class="features-description">HR managers can easily add new employees to the system, keeping track of essential details such as name and contact information.</p>
+          </div>
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_2.jpeg" alt="features" />
+            <h2 class="features-title">View Employee List</h2>
+            <p class="features-description">HR managers can quickly access a searchable list of all employees, making it easy to find and manage employee information.</p>
+          </div>
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_3.jpeg" alt="features" />
+            <h2 class="features-title">Log Working Hours</h2>
+            <p class="features-description">Employees are automatically checked-in and out when they login and out of the system, ensuring accurate records of working hours.</p>
+          </div>
         </div>
       </section>
-      <section id="contact">
-        <div class="contact-form">
-          <form id="contactForm">
-            <h2 class="form-title">Contact Us</h2>
-            <input type="text" id="name" placeholder="Name" name="name" required />
-            <input type="email" id="email" placeholder="Email" name="email" required />
-            <textarea id="message" placeholder="Message" name="message"></textarea>
-            <button type="submit">Send</button>
-          </form>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2>About Us</h2>
+          <p class="about-description">
+            NextCorp is dedicated to providing the best solutions for how small corporations manage their employees' data. Our all-in-one employee management system is designed to streamline HR
+            processes, making it easier for organizations to handle employee information efficiently. This project was inspired by how organizations especially small still used manual attendance
+            systems. We then asked ourselves <strong><em>"How about creating a smart, automated checker system for employee attendance?"</em></strong>
+            The simplicity and potential impact of the idea immediately resonated with all of us. We then realized this could solve a common problem in many businesses.
+          </p>
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <h2 class="features-header">Meet the Team</h2>
+        <div class="contact-container container">
+          <div class="contact-card">
+            <h2 class="contact-title">Soufiane Sadgali</h2>
+            <p class="contact-role">- Project Manager & Back-end Architect.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/soufiane-sadgali/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/BitByteBender" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://twitter.com/BitByteBender" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2 class="contact-title">Cleveland Ataafi</h2>
+            <p class="contact-role">- Front-end Engineer.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/cleveland-ataafi/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/thatguykwameC" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://twitter.com/thatguykwameC" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2 class="contact-title">Olatunji Oluwadare</h2>
+            <p class="contact-role">- Solution Tester/Data provider & UX/UI Designer.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/olatunji-oluwadare/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/DevTunechi" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://x.com/baaleofnaija" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="project-repo">
+          <button class="project-btn" onclick="location.href='https://github.com/BitByteBender/Next_Corp_MVP.git'">View Our Project Repository</button>
         </div>
       </section>
     </main>
@@ -87,6 +112,6 @@
         <p>Copyright &copy; NextCorp 2024</p>
       </div>
     </footer>
-    <script src="../scripts/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
