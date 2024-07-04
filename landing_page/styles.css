@@ -58,6 +58,18 @@ header nav a:hover {
   color: #ddd;
 }
 
+/* Responsive Header */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+  }
+}
+
 /* Heading Styles */
 h2 {
   text-align: center;
@@ -69,24 +81,20 @@ h2 {
   display: flex;
   padding: 0;
   height: calc(100vh - 80px);
+  flex-direction: column-reverse;
 }
 
-/* Image Container Styles */
 .image-container {
-  position: relative;
-  width: 70%;
-  height: calc(100vh - 80px);
-  overflow: hidden;
+  width: 100%;
+  height: auto;
 }
 
 .cover-image {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: auto;
   object-fit: cover;
-  display: block;
 }
 
-/* Hero Section Styles */
 .hero {
   display: flex;
   align-items: center;
@@ -104,6 +112,22 @@ h2 {
 .hero .container p {
   font-size: 1.25rem;
   margin: 1rem 0;
+}
+
+/* Responsive Main Page */
+@media (min-width: 768px) {
+  .main-page {
+    flex-direction: row;
+  }
+
+  .image-container {
+    width: 70%;
+    height: calc(100vh - 80px);
+  }
+
+  .cover-image {
+    height: calc(100vh - 80px);
+  }
 }
 
 /* Button Styles */
@@ -163,12 +187,14 @@ section {
 
 .features-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
 
 .feature-desc {
-  width: 30%;
+  width: 100%;
+  max-width: 300px;
   text-align: center;
   background-color: #fff;
   border-radius: 0.5rem;
@@ -201,6 +227,7 @@ section {
 
 .contact-container {
   display: flex;
+  flex-direction: column;
   gap: 3rem;
 }
 
@@ -215,7 +242,7 @@ section {
   justify-content: center;
   gap: 1.2rem;
   padding: 60px 20px;
-  width: 30%;
+  width: 100%;
 }
 
 .contact-icon {
@@ -235,6 +262,17 @@ section {
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
+}
+
+/* Responsive Contact Section */
+@media (min-width: 768px) {
+  .contact-container {
+    flex-direction: row;
+  }
+
+  .contact-card {
+    width: 30%;
+  }
 }
 
 /* Footer Styles */
