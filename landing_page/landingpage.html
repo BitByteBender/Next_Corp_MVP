@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NextCorp Landing Page." />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../images/NextCorp_favicon.png" type="image/x-icon" />
+    <title>NextCorp</title>
+    <!-- Import nunito sans font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>NextCorp</h1>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="main-page">
+        <div class="image-container">
+          <img src="images/cover_image.jpeg" alt="Cover Image" class="cover-image" />
+        </div>
+        <div class="hero">
+          <div class="container">
+            <h2>Welcome to NextCorp</h2>
+            <p>Your all-in-one small corp manager.</p>
+            <button onclick="location.href='http://soniclab.tech/corp_auth/login/'">Try the App</button>
+          </div>
+        </div>
+      </section>
+      <section id="features" class="features">
+        <h2 class="features-header">Features</h2>
+        <div class="features-container">
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_1.jpeg" alt="features" />
+            <h2 class="features-title">Add New Employees</h2>
+            <p class="features-description">HR managers can easily add new employees to the system, keeping track of essential details such as name and contact information.</p>
+          </div>
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_2.jpeg" alt="features" />
+            <h2 class="features-title">View Employee List</h2>
+            <p class="features-description">HR managers can quickly access a searchable list of all employees, making it easy to find and manage employee information.</p>
+          </div>
+          <div class="feature-desc">
+            <img class="features-img" loading="lazy" src="images/feature_3.jpeg" alt="features" />
+            <h2 class="features-title">Log Working Hours</h2>
+            <p class="features-description">Employees are automatically checked-in and out when they login and out of the system, ensuring accurate records of working hours.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2>About Us</h2>
+          <p class="about-description">
+            NextCorp is dedicated to providing the best solutions for how small corporations manage their employees' data. Our all-in-one employee management system is designed to streamline HR
+            processes, making it easier for organizations to handle employee information efficiently. This project was inspired by how organizations especially small still used manual attendance
+            systems. We then asked ourselves <strong><em>"How about creating a smart, automated checker system for employee attendance?"</em></strong>
+            The simplicity and potential impact of the idea immediately resonated with all of us. We then realized this could solve a common problem in many businesses.
+          </p>
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <h2 class="features-header">Meet the Team</h2>
+        <div class="contact-container container">
+          <div class="contact-card">
+            <h2 class="contact-title">Soufiane Sadgali</h2>
+            <p class="contact-role">- Project Manager & Back-end Architect.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/soufiane-sadgali/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/BitByteBender" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://twitter.com/BitByteBender" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2 class="contact-title">Cleveland Ataafi</h2>
+            <p class="contact-role">- Front-end Engineer.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/cleveland-ataafi/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/thatguykwameC" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://twitter.com/thatguykwameC" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2 class="contact-title">Olatunji Oluwadare</h2>
+            <p class="contact-role">- Solution Tester/Data provider & UX/UI Designer.</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/olatunji-oluwadare/" target="_blank"><img class="contact-icon" src="images/linkedin_icon.png" alt="linkedin_icon" /></a>
+              <a href="https://github.com/DevTunechi" target="_blank"><img class="contact-icon" src="images/github_icon.png" alt="github_icon" /></a>
+              <a href="https://x.com/baaleofnaija" target="_blank"><img class="contact-icon" src="images/twitter_icon.png" alt="twitter_icon" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="project-repo">
+          <button class="project-btn" onclick="location.href='https://github.com/BitByteBender/Next_Corp_MVP.git'">View Our Project Repository</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <p>Copyright &copy; NextCorp 2024</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
